@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+
+:root {
+  --brand-gradient: linear-gradient(
+    90deg,
+    #ff5a1f 0%,
+    #e91e83 55%,
+    #8b35f0 100%
+  );
+}
+
+.brand-gradient {
+  background: var(--brand-gradient);
+}
+
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
