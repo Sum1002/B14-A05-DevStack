@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "../assets/logo-text.png";
 
 export default function Footer() {
   return (
@@ -8,12 +9,7 @@ export default function Footer() {
           {/* Brand Block */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="brand-gradient text-white font-bold px-2.5 py-1 rounded-lg text-lg">
-                DS
-              </span>
-              <span className="text-xl font-extrabold tracking-tight">
-                Dev <span className="brand-gradient-text">Stack</span>
-              </span>
+              <img src={logo} alt="Dev Stack" className="h-10 w-auto object-contain" />
             </div>
             <p className="text-sm text-gray-500 max-w-sm">
               Curated tools, technologies, and resources for developers building
