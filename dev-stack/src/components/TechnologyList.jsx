@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TechnologyCard from "./TechnologyCard";
+import StackSidebar from "./StackSidebar";
 
 function TechnologyList({ stack, setStack }) {
   const [technologies, setTechnologies] = useState([]);
@@ -58,17 +59,26 @@ function TechnologyList({ stack, setStack }) {
             </div>
           </div>
         ) : (
-          /* Technology Grid */
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {technologies.map((technology) => (
-              <TechnologyCard
-                key={technology.id}
-                technology={technology}
-                onAdd={handleAddToStack}
-              />
-          ))}
-          </div>
-        )}
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+  {/* Technology Cards */}
+  <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-2">
+    {technologies.map((technology) => (
+      <TechnologyCard
+        key={technology.id}
+        technology={technology}
+        onAdd={handleAddToStack}
+      />
+    ))}
+  </div>
+
+  {/* Your Stack */}
+  <div className="lg:col-span-1">
+    <StackSidebar
+      stack={stack}
+      setStack={setStack}
+    />
+  </div>
+</div>)}
       </div>
     </section>
   );
