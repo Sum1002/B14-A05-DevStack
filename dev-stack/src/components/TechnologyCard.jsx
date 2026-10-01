@@ -1,4 +1,4 @@
-function TechnologyCard({ technology, onAdd }) {
+function TechnologyCard({ technology, onAdd, isAdded }) {
   return (
     <div className="flex min-h-[330px] flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       {/* Top */}
@@ -40,10 +40,15 @@ function TechnologyCard({ technology, onAdd }) {
       {/* Button */}
       <button
         type="button"
-        className="mt-4 w-full rounded-lg bg-gray-950 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
+        disabled={isAdded}
+        className={`mt-4 w-full rounded-lg py-3 text-sm font-medium text-white transition ${
+          isAdded
+            ? "cursor-not-allowed bg-gray-400"
+            : "bg-gray-950 hover:bg-gray-800"
+        }`}
         onClick={() => onAdd(technology)}
       >
-        Add to Stack
+        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>
     </div>
   );
