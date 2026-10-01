@@ -1,10 +1,19 @@
 import { useEffect, useState } from "react";
 import TechnologyCard from "./TechnologyCard";
 
-function TechnologyList() {
+function TechnologyList({ stack, setStack }) {
   const [technologies, setTechnologies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const handleAddToStack = (technology) => {
+  const alreadyAdded = stack.some((item) => item.id === technology.id);
 
+  if (alreadyAdded) {
+    return;
+  }
+
+  setStack([...stack, technology]);
+  console.log("Added:", technology.name);
+};
   useEffect(() => {
     fetch("public/data/technologies.json")
       .then((response) => {
@@ -52,8 +61,12 @@ function TechnologyList() {
           /* Technology Grid */
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {technologies.map((technology) => (
-              <TechnologyCard key={technology.id} technology={technology} />
-            ))}
+              <TechnologyCard
+                key={technology.id}
+                technology={technology}
+                onAdd={handleAddToStack}
+              />
+          ))}
           </div>
         )}
       </div>

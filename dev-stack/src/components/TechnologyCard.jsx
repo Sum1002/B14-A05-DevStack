@@ -1,4 +1,4 @@
-function TechnologyCard({ technology }) {
+function TechnologyCard({ technology, onAdd }) {
   return (
     <div className="flex min-h-[330px] flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       {/* Top */}
@@ -41,6 +41,7 @@ function TechnologyCard({ technology }) {
       <button
         type="button"
         className="mt-4 w-full rounded-lg bg-gray-950 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
+        onClick={() => onAdd(technology)}
       >
         Add to Stack
       </button>
